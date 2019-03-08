@@ -1,0 +1,10 @@
+Package: LinearModels
+Type: Package
+Title: Machine Learning Project 2
+Version: 2019.03.08
+Author: Van William Steinbrenner
+Maintainer: Van William Steinbrenner <vws2@nau.edu>
+Description: Development of project 2
+License: GPL-3
+LinkingTo: RcppEigen
+Suggests: ElemStatLearn, testthat
