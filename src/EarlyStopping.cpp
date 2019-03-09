@@ -1,4 +1,4 @@
-#include "EarlyStoppingLM.h"
+#include "EarlyStopping.h"
 #include <Eigen/Dense> //matrix library, does dynamic memory allocation 
 #include <iostream>
 
