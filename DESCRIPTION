@@ -2,9 +2,14 @@ Package: LinearModels
 Type: Package
 Title: Machine Learning Project 2
 Version: 2019.03.08
-Author: Van William Steinbrenner
-Maintainer: Van William Steinbrenner <vws2@nau.edu>
-Description: Development of project 2
+Author: Van William Steinbrenner, Chloe Bates, Austin Torrence, Huayu Li
+Maintainer: Van William Steinbrenner <vws2@nau.edu>, Chloe Bates <ccb323@nau.edu>, Huayu Li <hl454@nau.edu>, Austin Torrence <art296@nau.edu>
+Description: Development of project 2 using R/C++
 License: GPL-3
 LinkingTo: RcppEigen
-Suggests: ElemStatLearn, testthat
+Suggests: 
+    ElemStatLearn, 
+    testthat, 
+    knitr, 
+    rmarkdown
+VignetteBuilder: knitr
