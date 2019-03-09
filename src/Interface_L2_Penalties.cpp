@@ -22,7 +22,7 @@ void L2_Penalties_interface (const double X_mat,
 }
 
 R_CMethodDef CMethods[] = {
-  {"L2_Penalties_interface", (DL_FUNC) &L2_Penalties_interface, 6}, 
+  {"L2_Penalties_interface", (DL_FUNC) &L2_Penalties_interface, 3}, 
   {NULL, NULL, 0}
 };
 

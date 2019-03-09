@@ -2,14 +2,20 @@
 #include <Eigen/Dense> //matrix library, does dynamic memory allocation 
 #include <iostream>
 
-int LMSquareLossIterations()
+int LMSquareLossIterations(const double X_mat,
+                           const double Y_vec, 
+                           const double max_iterations, 
+                           const double step_size)
 {
   // TODO
   
   return 0;
 }
 
-int LMLogisticLossIterations()
+int LMLogisticLossIterations(const double X_mat,
+                             const double Y_vec, 
+                             const double max_iterations, 
+                             const double step_size)
 {
   // TODO
   

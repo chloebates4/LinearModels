@@ -9,13 +9,14 @@
 #' @param penalty non-negative numeric scalar
 #' @param opt.thresh positive numeric scalar that controls when to stop and declare that a particular weight vector is “optimal” numerically
 #' @param initial.weight.vec initial weight vector
+#' @param step.size constant we will decide 
 #'
 #' @return optimal weight vector (˜ w, for scaled data) for the given penalty parameter
 #' @export
 #'
 #' @examples
 #' data(spam, package="ElemStatLearn")
-#' 
+#' step.size <- .01
 #' optimalWeight<-LMLogisticLossIterations(X.scaled.mat, Y.vec, penalty, opt.thresh, initial.weight.vec)
 LMLogisticLossL2 <- function(X.scaled.mat, y.vec, penalty, opt.thresh, 
                              initial.weight.vec)
@@ -23,8 +24,8 @@ LMLogisticLossL2 <- function(X.scaled.mat, y.vec, penalty, opt.thresh,
   result.list <- .C(
     "L2_interface", as.double(X.scaled.mat), as.double(Y.vec), 
     as.double(penalty), as.double(opt.thresh), 
-    as.double(initial.weight.vec), predictions=double(initial.weight.vec), 
-    PACKAGE="LinearModels")
+    as.double(initial.weight.vec), as.double(step.size),
+    predictions=double(initial.weight.vec), PACKAGE="LinearModels")
   result.list$predictions
 }
 
@@ -34,7 +35,29 @@ LMSquareLossL2 <- function(X.scaled.mat, y.vec, penalty, opt.thresh,
   result.list <- .C(
     "L2_interface", as.double(X.scaled.mat), as.double(Y.vec), 
     as.double(penalty), as.double(opt.thresh), 
-    as.double(initial.weight.vec), predictions=double(initial.weight.vec), 
+    as.double(initial.weight.vec), as.double(step.size),
+    predictions=double(initial.weight.vec), 
     PACKAGE="LinearModels")
   result.list$predictions
 }
+
+
+
+#' Sigmoid function
+#'
+#'maps any real value into another value between 0 and 1
+#'
+#' @param z prediction
+#'
+#' @return
+#' @export
+#'
+#' @examples
+sigmoid <-function(z)
+{
+  result.list <- .C(
+    "sigmoid_interface", as.double(z),
+    predictions=double(z), PACKAGE="LinearModels")
+  result.list$predictions
+}
+

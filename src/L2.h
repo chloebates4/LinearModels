@@ -1,17 +1,19 @@
 
-const double STEP_SIZE = .5; 
+double sigmoid(const double z); 
 
 int LMSquareLossL2(const double X_scaled_mat,
                    const double y_vec, 
                    const double penalty, //non-negative number scalar
                    const double opt_thresh, //positive numeric scalar
-                   const double initial_weight_vec);
+                   const double initial_weight_vec, 
+                   const double step_size);
 
 int LMLogisticLossL2(const double X_scaled_mat,
                      const double y_vec, 
                      const double penalty, //non-negative number scalar
                      const double opt_thresh, //positive numeric scalar
-                     const double initial_weight_vec);
+                     const double initial_weight_vec, 
+                     const double step_size);
 
 int LMSquareLossL2penalties(const double X_mat, 
                             const double Y_vec, 

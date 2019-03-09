@@ -6,13 +6,14 @@ void L2_interface (const double X_scaled_mat,
                    const double Y_vec, 
                    const double penalty, //non-negative number scalar
                    const double opt_thresh, //positive numeric scalar
-                   const double initial_weight_vec)
+                   const double initial_weight_vec, 
+                   const double step_size)
 {
   int L2SquareStatus = LMSquareLossL2(X_scaled_mat, Y_vec, penalty, 
-                    opt_thresh, initial_weight_vec);
+                    opt_thresh, initial_weight_vec, step_size);
   int L2LogisticStatus = LMLogisticLossL2(X_scaled_mat, Y_vec, penalty, 
-                    opt_thresh, initial_weight_vec);
-   
+                    opt_thresh, initial_weight_vec, step_size);
+  
   if(L2SquareStatus != 0)
   {
     error("non-zero exit status from L2SquareStatus");
@@ -20,6 +21,14 @@ void L2_interface (const double X_scaled_mat,
   else if(L2LogisticStatus != 0)
   {
     error("non-zero exit status from L2LogisticStatus");
+  }
+}
+void sigmoid_interface(const double z)
+{
+  int sigmoidStatus = sigmoid(z); 
+  if(sigmoidStatus != 0)
+  {
+    error("non-zero exit status from sigmoidStatus");
   }
 }
 

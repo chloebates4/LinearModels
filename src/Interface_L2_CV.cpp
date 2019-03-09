@@ -3,9 +3,9 @@
 #include <R_ext/Rdynload.h>
 
 void L2_CV_interface (const double X_mat, 
-                             const double Y_vec,
-                             const double fold_vec,
-                             const double penalty_vec)
+                      const double Y_vec,
+                      const double fold_vec,
+                      const double penalty_vec)
 {
   int L2SquareCVStatus = LMSquareLossL2CV(X_mat, 
                         Y_vec, fold_vec, penalty_vec);
@@ -23,7 +23,7 @@ void L2_CV_interface (const double X_mat,
 }
 
 R_CMethodDef CMethods[] = {
-  {"L2_CV_interface", (DL_FUNC) &L2_CV_interface, 6}, 
+  {"L2_CV_interface", (DL_FUNC) &L2_CV_interface, 4}, 
   {NULL, NULL, 0}
 };
 
