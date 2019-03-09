@@ -21,6 +21,23 @@
 LMSquareLossL2 <- function(X.scaled.mat, Y.vec, penalty, opt.thresh, 
                            initial.weight.vec)
 {
-  
+  opt.weight<-initial.weight.vec
+  index<-0
+  for(index in 100)
+  {
+    N<-length(X.scaled.mat)
+
+    #gradient
+    gradient<-(as.matrix(X.scaled.mat) %*% (initial.weight.vec - Y.vec))
+    gradient<-(gradient/N)*opt.thresh
+    
+    opt.weight<-initial.weight.vec - step.size*gradient + penalty
+    
+
+    scaled.opt.weight = as.vector(opt.weight)
+    
+    
+  }
+  return(scaled.opt.weight)
 }
 
