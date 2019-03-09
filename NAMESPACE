@@ -1,2 +1,0 @@
-useDynLib(LinearModels)
-exportPattern("^[[:alpha:]]+")
