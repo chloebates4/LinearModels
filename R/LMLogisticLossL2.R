@@ -50,8 +50,9 @@ LMLogisticLossL2 <- function(X.scaled.mat, Y.vec, penalty, opt.thresh,
     #gradient
     gradient<-(as.matrix(X.scaled.mat) %*% (prediction -cost))
     gradient<-(gradient/N)*opt.thresh
-    
+
     opt.weight<-initial.weight.vec - step.size*gradient + penalty
+
     
     scaled.opt.weight = as.vector(opt.weight)
     
