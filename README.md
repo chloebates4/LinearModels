@@ -8,3 +8,4 @@ For this project you will be writing an R package that implements gradient desce
 * [Chloe Bates](ccb323@nau.edu)
 * [Austin Torrence](art296@nau.edu)
 * [Van Steinbrenner](vws2@nau.edu)
+* [Huayu Li](hl459@nau.edu)
