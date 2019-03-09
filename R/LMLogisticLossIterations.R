@@ -1,7 +1,7 @@
 #' LMLogisticLossIterations
 #'
 #' @param X.scaled.mat already has mean=0 and sd=1 for each of its columns
-#' @param Y.vec label vector 1xn
+#' @param y.vec label vector 1xn
 #' @param penalty non-negative numeric scalar
 #' @param opt.thresh positive numeric scalar that controls when to stop and declare that a particular weight vector is “optimal” numerically
 #' @param initial.weight.vec initial weight vector
@@ -23,7 +23,8 @@
 LMLogisticLossIterations<-function(X.scaled.mat, y.vec, penalty, opt.thresh,
                                    initial.weight.vec, step.size, max.iterations)
 {
-  if(nrow(X.scaled.mat) <= 0 || ncol(X.scaled.mat) <= 0|| nrow(y.vec)<=0 || ncol(y.vec)<=0)
+  if(nrow(X.scaled.mat) <= 0 || ncol(X.scaled.mat)
+     || nrow(y.vec) || ncol(y.vec))
   {
     error("The dimensions are incorrect of the input matrix or vector")
   }
@@ -37,6 +38,7 @@ LMLogisticLossIterations<-function(X.scaled.mat, y.vec, penalty, opt.thresh,
     }
   }
   
+
   beta.vec <- rep(0, 1, max.iterations)
   beta.temp <- 0
   
@@ -56,6 +58,7 @@ LMLogisticLossIterations<-function(X.scaled.mat, y.vec, penalty, opt.thresh,
     intitial.weight.vec <- initial.weight.vec[, iter]
     beta.temp <- beta.vec[iter]
   }
-  
+
   return(intitial.weight.vec)
+
 }
