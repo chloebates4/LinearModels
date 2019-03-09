@@ -22,7 +22,7 @@
 #' Y.vec<-spam[1:100, 24]
 #' penalty<-1
 #' opt.thresh<-.01
-#' initial.weight.vec<-rep()
+#' initial.weight.vec<-rep(0, ncol(X.scaled.mat))
 LMLogisticLossL2 <- function(X.scaled.mat, Y.vec, penalty, opt.thresh, 
                            initial.weight.vec, step.size)
 {
@@ -30,6 +30,33 @@ LMLogisticLossL2 <- function(X.scaled.mat, Y.vec, penalty, opt.thresh,
   sigmoid<-function(z){
     (1+exp(-z))^-1
   }
-  
+  index<-0
+  for(index in 100)
+  {
+    N<-length(X.scaled.mat)
+    
+    prediction<-sigmoid(as.matrix(X.scaled.mat) %*% as.matrix(initial.weight.vec))
+    observations<-length(Y.vec)
+    
+    one_cost<- prediction * Y.vec
+    two_cost<- (1-prediction) * (1-Y.vec)
+    
+    #sum of both costs
+    cost<- one_cost + two_cost
+    
+    #average of cost
+    cost<-sum(cost)/observations
+    
+    #gradient
+    gradient<-(as.matrix(X.scaled.mat) %*% (prediction -cost))
+    gradient<-(gradient/N)*opt.thresh
+    
+    opt.weight<-initial.weight.vec - step.size*gradient + penalty
+    
+    scaled.opt.weight = as.vector(opt.weight)
+    
+    
+  }
+  return(scaled.opt.weight)
   
 }
